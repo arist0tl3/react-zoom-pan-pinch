@@ -84,27 +84,27 @@ class StateProvider extends Component<StateContextProps, StateContextState> {
   componentDidMount() {
     const passiveOption = makePassiveEventOption(false);
 
-    // Panning on window to allow panning when mouse is out of wrapper
+    // Panning on window to allow panning when pointer is out of wrapper
     window.addEventListener(
-      "mousedown",
+      "pointerdown",
       this.handleStartPanning,
       passiveOption,
     );
-    window.addEventListener("mousemove", this.handlePanning, passiveOption);
-    window.addEventListener("mouseup", this.handleStopPanning, passiveOption);
+    window.addEventListener("pointermove", this.handlePanning, passiveOption);
+    window.addEventListener("pointerup", this.handleStopPanning, passiveOption);
   }
 
   componentWillUnmount() {
     const passiveOption = makePassiveEventOption(false);
 
     window.removeEventListener(
-      "mousedown",
+      "pointerdown",
       this.handleStartPanning,
       passiveOption,
     );
-    window.removeEventListener("mousemove", this.handlePanning, passiveOption);
+    window.removeEventListener("pointermove", this.handlePanning, passiveOption);
     window.removeEventListener(
-      "mouseup",
+      "pointerup",
       this.handleStopPanning,
       passiveOption,
     );
